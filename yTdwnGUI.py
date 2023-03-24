@@ -6,8 +6,14 @@ import customtkinter
 path = os.path.join(os.path.expanduser('~'), 'Downloads')
 
 
+"""def get_len(pl: pytube.Playlist):
+    i = 0
+    for vi
+        i+=1
+    return i"""
+
 def step(current_state, max):
-    unit = (max/100)
+    unit = (1/max)
     print("max value:", max)
     current_state += unit
     print("current state: ", current_state)
@@ -16,7 +22,6 @@ def step(current_state, max):
     return current_state
 
 def download():
-
     try:  
         link = entry.get()  
         print(link)
@@ -27,11 +32,16 @@ def download():
         #ytobj = pytube.YouTube(link)
         #ytobj = vd
 
+        max = yt.length
+
         prg = 0.0
         
         indx = vd.streams.index(vd.streams.first())
-        max = vd.streams.index(vd.streams.last())
+        #max = vd.streams.index(vd.streams.last())
         
+        """
+        for video in yt.videos:
+            video.streams.first().download()"""  
         while(indx < max): 
             vd = pytube.YouTube(pls[indx]) #, on_progress_callback=step
             stream = vd.streams.get_highest_resolution()

@@ -1,2 +1,2 @@
-# yt_playlist_downloader
+# Youtube Playlist Downloader
 a tool to download playlist from youtube

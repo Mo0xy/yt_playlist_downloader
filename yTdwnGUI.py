@@ -6,17 +6,12 @@ import customtkinter
 path = os.path.join(os.path.expanduser('~'), 'Downloads')
 
 
-"""def get_len(pl: pytube.Playlist):
-    i = 0
-    for vi
-        i+=1
-    return i"""
 
 def step(current_state, max):
     unit = (1/max)
-    print("max value:", max)
+    #print("max value:", max)
     current_state += unit
-    print("current state: ", current_state)
+    #print("current state: ", current_state)
     progress_bar.update()
     progress_bar.set(current_state)
     return current_state
@@ -28,31 +23,25 @@ def download():
         
         yt = pytube.Playlist(link)  
         pls = yt.video_urls
-        vd = pytube.YouTube(link)
-        #ytobj = pytube.YouTube(link)
-        #ytobj = vd
-
-        max = yt.length
+        vd = pytube.YouTube(link)  
 
         prg = 0.0
-        
         indx = vd.streams.index(vd.streams.first())
-        #max = vd.streams.index(vd.streams.last())
+        max = yt.length
         
         """
         for video in yt.videos:
             video.streams.first().download()"""  
+        
         while(indx < max): 
             vd = pytube.YouTube(pls[indx]) #, on_progress_callback=step
             stream = vd.streams.get_highest_resolution()
             stream.download(path)
-            #percentage = float(vd.streams.index(vd.streams.last)/100)
             prg = step(prg, max)
             indx += 1
     except:
-        print("Error")
-    
-
+        errorlabel = customtkinter.CTkLabel(master=frame, text="Invalid Url", bg_color="red", height=14, )
+        errorlabel.place(relx=0.5, rely=0.6, anchor=customtkinter.CENTER ,)
 
 #setting application appereance
 customtkinter.set_appearance_mode("System")

@@ -5,13 +5,6 @@ import customtkinter
 
 path = os.path.join(os.path.expanduser('~'), 'Downloads')
 
-
-"""def get_len(pl: pytube.Playlist):
-    i = 0
-    for vi
-        i+=1
-    return i"""
-
 def step(current_state, max):
     unit = (1/max)
     print("max value:", max)
